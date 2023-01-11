@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.39.0" timestamp="2023-01-04T16:57:10.465">
+<file name="C:\Users\pwend\IdeaProjects\gradle-warsztat-example\src\main\java\pl\code\Main.java">
+<violation beginline="10" endline="13" begincolumn="16" endcolumn="32" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="pl.code" class="Main" method="main" variable="variable" externalInfoUrl="https://pmd.github.io/pmd-6.39.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'variable' (lines '10'-'13').
+</violation>
+</file>
+</pmd>
