@@ -1,0 +1,107 @@
+//// taski domyslne
+////defaultTasks('ourFirstTask', 'ourThirdTask')
+//
+//task ourFirstTask{
+//    group 'zajavka group'
+//    doLast{
+//        println 'homeDir: ' + gradle.gradleHomeDir
+//    }
+//}
+//
+//task ourSecondTask{
+//    group 'zajavka group'
+//    description 'zajavka description'
+////    always printed bedzie drukowało sie przy kazdym zadaniu
+//    println 'always printed'
+//}
+//
+//task ourThirdTask{
+//    group 'zajavka group'
+//// to drukuje sie zawsze piewsze w zadaniu trzecim
+//    doFirst{
+//        println 'doFirst'
+//    }
+//
+//    doLast{
+//        println 'doLast'
+//    }
+//}
+//
+//task clean{
+//    doLast{
+//        println 'pretending to clean something'
+//    }
+//}
+//
+//task compile {
+//    doLast{
+//        println 'pretending to compile something'
+//    }
+//}
+//
+////jezeli wykonamy zadanie afterCompailing to wywołane zostanie najpierw zadanie compile
+//task afterCompailing(dependsOn:'compile'){
+//    doLast{
+//        println 'running after compile'
+//    }
+//}
+//
+//task afterClean{
+//    doLast{
+//        println 'running after clean'
+//    }
+//}
+//
+////przypisanie wykonania afterClean z clean. wywołanie afterClean spowoduje wywołanie clean
+//afterClean.dependsOn clean
+
+
+//
+//apply plugin: 'java'
+//version '0.1.0'
+//// z jaka wersja javy chcemy skąpilować
+//sourceCompatibility= '17'
+//
+////ustawienie pliku startowego
+//jar{
+//    archiveBaseName = 'zajavka-jar'
+//    manifest{
+//         attributes 'Main-Class': 'pl.code.Main'
+//    }
+//}
+
+
+plugins {
+    id 'java'
+    id 'pmd'
+}
+
+group = 'pl.code'
+version = '1.0.1'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation group: 'org.jsoup', name:'jsoup', version: '1.14.3'
+// to samo co powyzej krócej
+    implementation 'org.jsoup:jsoup:1.14.3'
+}
+
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'pl.code.Main'
+    }
+    from{
+            configurations.runtimeClasspath.collect{it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+pmd {
+    consoleOutput = true
+}
